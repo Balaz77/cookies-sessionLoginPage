@@ -1,7 +1,6 @@
 
 <?php
 
-
 session_start();
 
 //O isset serve para verificar se o metodo post esta realmente funcionando, se estiver ele executara o comando do if abaixo.
@@ -10,7 +9,11 @@ if(isset($_POST['user'], $_POST['pwd'])){
         
         $_SESSION['user'] = $_POST['user'];
         $_SESSION['pwd'] = $_POST['pwd'];
-     
+
+        setcookie('nome',$_POST['user'], time() + 120);
+        setcookie('senha',$_POST['pwd'], time() + 120);
+
+        //redireciona o usuario para tela de login
         header('Location:logConfirm.php');
 
     }
